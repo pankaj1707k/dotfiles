@@ -1,0 +1,6 @@
+[
+    {
+        "key": "alt+n",
+        "command": "python.execInTerminal"
+    }
+]
