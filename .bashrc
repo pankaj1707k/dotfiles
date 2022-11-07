@@ -29,10 +29,18 @@ disable_proxy() {
     unset https_proxy
 
     # For apt package manager
-    sudo rm /etc/apt/apt.conf.d/proxy.conf
-    rm ~/proxy.conf
+    if [ -f /etc/apt/apt.conf.d/proxy.conf ]; then
+        sudo rm /etc/apt/apt.conf.d/proxy.conf
+    fi
+    if [ -f ~/proxy.conf ]; then
+        rm ~/proxy.conf
+    fi
 
     # For dnf package manager
-    sudo rm /etc/dnf/dnf.conf
-    rm ~/dnf.conf
+    if [ -f /etc/dnf/dnf.conf ]; then
+        sudo rm /etc/dnf/dnf.conf
+    fi
+    if [ -f ~/dnf.conf ]; then
+        rm ~/dnf.conf
+    fi
 }
