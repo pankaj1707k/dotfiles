@@ -20,6 +20,11 @@ enable_proxy() {
     # For dnf package manager
     echo "[main]\nproxy=\"$proxy_url\"" > dnf.conf
     sudo cp ~/dnf.conf /etc/dnf/
+
+    # maven
+    if [ -f ~/.maven/settings-proxy.xml ]; then
+        sudo cp ~/.maven/settings-proxy.xml /etc/maven/settings.xml
+    fi
 }
 
 disable_proxy() {
@@ -42,5 +47,10 @@ disable_proxy() {
     fi
     if [ -f ~/dnf.conf ]; then
         rm ~/dnf.conf
+    fi
+
+    # maven
+    if [ -f ~/.maven/settings.xml ]; then
+        sudo cp ~/.maven/settings.xml /etc/maven/settings.xml
     fi
 }
