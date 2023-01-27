@@ -7,7 +7,11 @@ source ~/.bash_custom
 enable_proxy() {
     username="username"
     password="password"
-    proxy_url="http://$username:$password@172.31.2.4:8080"
+    ipaddr="x.x.x.x"
+    port="8080"
+    proxy_url="http://$username:$password@$ipaddr:$port"
+    proxy_url_noauth="http://$ipaddr:$port"
+
     export HTTP_PROXY="$proxy_url"
     export HTTPS_PROXY="$proxy_url"
     export http_proxy="$proxy_url"
@@ -20,6 +24,10 @@ enable_proxy() {
     # For dnf package manager
     echo "[main]\nproxy=\"$proxy_url\"" > dnf.conf
     sudo cp ~/dnf.conf /etc/dnf/
+
+    # Snap package manager
+    sudo snap set system proxy.http="$proxy_url_noauth"
+    sudo snap set system proxy.https="$proxy_url_noauth"
 
     # maven
     if [ -f ~/.maven/settings-proxy.xml ]; then
@@ -48,6 +56,10 @@ disable_proxy() {
     if [ -f ~/dnf.conf ]; then
         rm ~/dnf.conf
     fi
+
+    # Snap package manager
+    sudo snap unset system proxy.http
+    sudo snap unset system proxy.https
 
     # maven
     if [ -f ~/.maven/settings.xml ]; then
