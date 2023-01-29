@@ -1,0 +1,36 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+continuation_prompt = '[->](bold green) '
+
+[username]
+show_always = true
+
+[character]
+format = '[\$](bold green) '
+
+[directory]
+format = "[$path](green) "
+truncation_length = 0
+
+# For WSL
+# [directory.substitutions]
+# '{windows-user-home-dir}' = 'winhome'
+
+[git_branch]
+style = 'bold blue'
+
+[git_metrics]
+disabled = false
+
+[sudo]
+disabled = false
+
+[cmd_duration]
+disabled = true
+
+[java]
+symbol = '🍵 '
+style = 'bold red'
+
+[nodejs]
+symbol = '[⬢](bold green) '
