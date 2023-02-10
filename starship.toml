@@ -5,9 +5,6 @@ continuation_prompt = '[->](bold green) '
 [username]
 show_always = true
 
-[character]
-format = '[\$](bold green) '
-
 [directory]
 format = "[$path](green) "
 truncation_length = 0
