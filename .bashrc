@@ -20,6 +20,7 @@ enable_proxy() {
     # For apt package manager
     echo "Acquire::http::Proxy \"$proxy_url\";Acquire::https::Proxy \"$proxy_url\";" > proxy.conf
     sudo cp ~/proxy.conf /etc/apt/apt.conf.d/
+    rm ~/proxy.conf
 
     # For dnf package manager
     echo "[main]\nproxy=\"$proxy_url\"" > dnf.conf

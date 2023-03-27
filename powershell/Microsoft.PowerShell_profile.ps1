@@ -1,4 +1,8 @@
-oh-my-posh init pwsh --config "~/Documents/WindowsPowerShell/CustomThemes/onehalf.minimal.omp.json" | Invoke-Expression
+# oh-my-posh theme
+# oh-my-posh init pwsh --config "~/Documents/WindowsPowerShell/CustomThemes/onehalf.minimal.omp.json" | Invoke-Expression
+
+# starship
+# Invoke-Expression (&starship init powershell)
 
 function Enable-Proxy {
 	$MainString = "{username}:{password}@{ipaddr}:{port}"
