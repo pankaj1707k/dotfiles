@@ -1,7 +1,10 @@
 # Append the following to the core .bashrc on the system
 
-# neofetch
+# prompt option 1
 source ~/.bash_custom
+
+# initialize starship -- prompt option 2
+eval "$(starship init bash)"
 
 # Proxy configuration
 enable_proxy() {
