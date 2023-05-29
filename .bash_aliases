@@ -1,3 +1,6 @@
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 alias python='python3'
 alias pip='pip3'
 alias update='sudo apt update && sudo apt upgrade'
