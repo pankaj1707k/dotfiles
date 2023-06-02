@@ -1,0 +1,21 @@
+{
+  "copyOnSelect": false,
+  "copyFormatting": false,
+  "launchMode": "maximized",
+  "profiles": {
+    "defaults": {
+      "cursorShape": "filledBox",
+      "font": {
+        "face": "FiraCode Nerd Font",
+        "size": 11,
+        "weight": "normal",
+        "features": {
+          "zero": 1
+        }
+      },
+      "opacity": 75,
+      "scrollbarState": "hidden",
+      "padding": "0, 0, 0, 0"
+    }
+  }
+}
