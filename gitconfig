@@ -1,0 +1,8 @@
+[user]
+	name = Pankaj Kumar
+	email = 76695979+pankaj1707k@users.noreply.github.com
+	signingkey = E2F9A0A197418F99
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
