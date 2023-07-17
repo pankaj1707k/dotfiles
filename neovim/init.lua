@@ -30,3 +30,9 @@ for key, value in pairs(options) do
     vim.opt[key] = value
 end
 
+-- Execute python file
+vim.api.nvim_set_keymap("n", "<C-A-N>", ":!python %<Enter>", {})
+
+-- Format python file
+vim.api.nvim_set_keymap("n", "<A-S-F>", ":!black %<Enter>", {})
+
