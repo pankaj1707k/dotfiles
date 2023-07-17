@@ -11,3 +11,5 @@ My configurations for some system components and development environments
 - Font config: `fonts.conf`
   - Location: `~/.config/fontconfig/`
   - Required fonts: `Inter`, `FiraMono Nerd Font`
+
+- `neovim/*` location: `~/.config/nvim/`
