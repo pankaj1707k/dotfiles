@@ -48,21 +48,12 @@ enable_proxy() {
     proxy_url="http://$username:$password@$ipaddr:$port"
     proxy_url_noauth="http://$ipaddr:$port"
 
-    export HTTP_PROXY="$proxy_url"
-    export HTTPS_PROXY="$proxy_url"
-    export http_proxy="$proxy_url"
-    export https_proxy="$proxy_url"
+    export {HTTP_PROXY,HTTPS_PROXY,http_proxy,https_proxy}="$proxy_url"
 
     # For apt package manager
     echo "Acquire::http::Proxy \"$proxy_url\";Acquire::https::Proxy \"$proxy_url\";" > proxy.conf
     sudo cp ~/proxy.conf /etc/apt/apt.conf.d/
     rm ~/proxy.conf
-
-    # For dnf package manager
-    echo "[main]" > ~/dnf.conf
-    echo "proxy=\"$proxy_url\"" >> ~/dnf.conf
-    sudo cp ~/dnf.conf /etc/dnf/
-    rm ~/dnf.conf
 
     # Snap package manager
     sudo snap set system proxy.http="$proxy_url_noauth"
@@ -75,10 +66,7 @@ enable_proxy() {
 }
 
 disable_proxy() {
-    unset HTTP_PROXY
-    unset HTTPS_PROXY
-    unset http_proxy
-    unset https_proxy
+    unset {HTTP_PROXY,HTTPS_PROXY,http_proxy,https_proxy}
 
     # For apt package manager
     if [ -f /etc/apt/apt.conf.d/proxy.conf ]; then
@@ -86,14 +74,6 @@ disable_proxy() {
     fi
     if [ -f ~/proxy.conf ]; then
         rm ~/proxy.conf
-    fi
-
-    # For dnf package manager
-    if [ -f /etc/dnf/dnf.conf ]; then
-        sudo rm /etc/dnf/dnf.conf
-    fi
-    if [ -f ~/dnf.conf ]; then
-        rm ~/dnf.conf
     fi
 
     # Snap package manager
