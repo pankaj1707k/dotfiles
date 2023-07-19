@@ -59,8 +59,10 @@ enable_proxy() {
     rm ~/proxy.conf
 
     # For dnf package manager
-    echo "[main]\nproxy=\"$proxy_url\"" > dnf.conf
+    echo "[main]" > ~/dnf.conf
+    echo "proxy=\"$proxy_url\"" >> ~/dnf.conf
     sudo cp ~/dnf.conf /etc/dnf/
+    rm ~/dnf.conf
 
     # Snap package manager
     sudo snap set system proxy.http="$proxy_url_noauth"
