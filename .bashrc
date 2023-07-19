@@ -85,3 +85,18 @@ disable_proxy() {
         sudo cp ~/.maven/settings.xml /etc/maven/settings.xml
     fi
 }
+
+auto_proxy() {
+    if [[ -n "$(ip addr | grep 'inet 172.*')" ]]; then
+        enable_proxy
+    else
+        disable_proxy
+    fi
+}
+
+# set proxy automatically at each prompt
+if [[ -n "$PROMPT_COMMAND" ]]; then
+    PROMPT_COMMAND="$PROMPT_COMMAND; auto_proxy"
+else
+    PROMPT_COMMAND="auto_proxy"
+fi
