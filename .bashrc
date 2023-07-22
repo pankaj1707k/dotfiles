@@ -63,6 +63,13 @@ enable_proxy() {
     if [ -f ~/.maven/settings-proxy.xml ]; then
         sudo cp ~/.maven/settings-proxy.xml /etc/maven/settings.xml
     fi
+
+    # gnome settings
+    gsettings set org.gnome.system.proxy mode manual
+    gsettings set org.gnome.system.proxy.http host "$ipaddr"
+    gsettings set org.gnome.system.proxy.http port "$port"
+    gsettings set org.gnome.system.proxy.https host "$ipaddr"
+    gsettings set org.gnome.system.proxy.https port "$port"
 }
 
 disable_proxy() {
@@ -84,6 +91,9 @@ disable_proxy() {
     if [ -f ~/.maven/settings.xml ]; then
         sudo cp ~/.maven/settings.xml /etc/maven/settings.xml
     fi
+
+    # gnome settings
+    gsettings set org.gnome.system.proxy mode none
 }
 
 auto_proxy() {
