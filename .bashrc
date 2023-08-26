@@ -50,15 +50,6 @@ enable_proxy() {
 
     export {HTTP_PROXY,HTTPS_PROXY,http_proxy,https_proxy}="$proxy_url"
 
-    # For apt package manager
-    echo "Acquire::http::Proxy \"$proxy_url\";Acquire::https::Proxy \"$proxy_url\";" > proxy.conf
-    sudo cp ~/proxy.conf /etc/apt/apt.conf.d/
-    rm ~/proxy.conf
-
-    # Snap package manager
-    sudo snap set system proxy.http="$proxy_url_noauth"
-    sudo snap set system proxy.https="$proxy_url_noauth"
-
     # maven
     if [ -f ~/.maven/settings-proxy.xml ]; then
         sudo cp ~/.maven/settings-proxy.xml /etc/maven/settings.xml
@@ -74,18 +65,6 @@ enable_proxy() {
 
 disable_proxy() {
     unset {HTTP_PROXY,HTTPS_PROXY,http_proxy,https_proxy}
-
-    # For apt package manager
-    if [ -f /etc/apt/apt.conf.d/proxy.conf ]; then
-        sudo rm /etc/apt/apt.conf.d/proxy.conf
-    fi
-    if [ -f ~/proxy.conf ]; then
-        rm ~/proxy.conf
-    fi
-
-    # Snap package manager
-    sudo snap unset system proxy.http
-    sudo snap unset system proxy.https
 
     # maven
     if [ -f ~/.maven/settings.xml ]; then
