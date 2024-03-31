@@ -420,7 +420,10 @@ require('lazy').setup {
       local servers = {
         -- clangd = {},
         -- gopls = {},
+        --
+        -- Ensure `npm` is available before enabling pyright
         -- pyright = {},
+        --
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -501,16 +504,14 @@ require('lazy').setup {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { 'prettier' },
-        html = { 'prettier' },
-        css = { 'prettier' },
-        json = { 'prettier' },
-        yaml = { 'prettier' },
+        -- python = { 'isort', 'black' },
+        -- javascript = { 'prettier' },
+        -- html = { 'prettier' },
+        -- css = { 'prettier' },
+        -- json = { 'prettier' },
+        -- yaml = { 'prettier' },
+        -- c = { 'clang-format' },
+        -- cpp = { 'clang-format' },
       },
     },
   },
