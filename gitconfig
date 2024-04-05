@@ -6,3 +6,7 @@
 	gpgsign = true
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
+[merge]
+	tool = nvimdiff
