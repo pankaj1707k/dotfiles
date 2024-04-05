@@ -10,9 +10,9 @@ My configurations for some system components and development environments
 
 - Font config: `fonts.conf`
   - Location: `~/.config/fontconfig/`
-  - Required fonts: `Inter`, `FiraMono Nerd Font`
+  - Required fonts: `Inter`, `JetBrainsMono Nerd Font`
 
-- `neovim/*` location: `~/.config/nvim/`
+- `nvim/*` location: `~/.config/nvim/`
 
 - `powershell/Microsoft.Powershell_profile.ps1` location: `C:\Users\{username}\Documents\Powershell\`
 
