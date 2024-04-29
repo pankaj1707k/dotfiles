@@ -11,7 +11,7 @@ vim.g.maplocalleader = ' '
 
 -- Make line numbers default
 vim.opt.number = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -92,6 +92,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Toggle Netrw file explorer
 vim.keymap.set('n', '<C-e>', '<cmd>:Lexplore<CR>', { desc = 'Toggle Netrw file explorer' })
+
+-- Move current line up/down
+vim.keymap.set('n', '<C-S-j>', '<cmd>:m +1<CR>', { desc = 'Move current line down' })
+vim.keymap.set('n', '<C-S-k>', '<cmd>:m -2<CR>', { desc = 'Move current line up' })
 
 -- [[ Basic Autocommands ]]
 --  See :help lua-guide-autocommands
