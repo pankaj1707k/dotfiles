@@ -9,6 +9,9 @@ vim.g.maplocalleader = ' '
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Netrw
+vim.g.netrw_banner = 0
+
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
