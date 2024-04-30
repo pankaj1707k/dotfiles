@@ -12,6 +12,9 @@ vim.g.maplocalleader = ' '
 -- Netrw
 vim.g.netrw_banner = 0
 
+-- NO WRAP!!
+vim.opt.wrap = false
+
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
