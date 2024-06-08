@@ -510,22 +510,41 @@ require('lazy').setup {
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    lazy = false,
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end,
+        mode = '',
+        desc = '[F]ormat buffer',
+      },
+    },
     opts = {
       notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
+      format_on_save = function(bufnr)
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style
+        local disable_filetypes = { c = true, cpp = true }
+        return {
+          timeout_ms = 500,
+          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+        }
+      end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- python = { 'isort', 'black' },
-        -- javascript = { 'prettier' },
-        -- html = { 'prettier' },
-        -- css = { 'prettier' },
-        -- json = { 'prettier' },
-        -- yaml = { 'prettier' },
-        -- c = { 'clang-format' },
-        -- cpp = { 'clang-format' },
+        python = { 'isort', 'black' },
+        javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescript = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        vue = { 'prettier' },
+        html = { 'prettier' },
+        css = { 'prettier' },
+        json = { 'prettier' },
+        jsonc = { 'prettier' },
+        yaml = { 'prettier' },
       },
     },
   },
@@ -628,17 +647,17 @@ require('lazy').setup {
     -- change the command in the config to whatever the name of that colorscheme is
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
-    'ellisonleao/gruvbox.nvim',
+    'folke/tokyonight.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      local theme = require 'gruvbox'
+      local theme = require 'tokyonight'
       theme.setup {
-        transparent_mode = true,
+        transparent = true,
       }
 
       -- Load the colorscheme here
-      vim.cmd.colorscheme 'gruvbox'
+      vim.cmd.colorscheme 'tokyonight'
 
       -- You can configure highlights by doing something like
       vim.cmd.hi 'Comment gui=none'
