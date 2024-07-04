@@ -656,6 +656,9 @@ require('lazy').setup {
         -- transparent_mode = true,
         underline = false,
         bold = false,
+        overrides = {
+          SignColumn = { bg = '#282828' },
+        },
       }
 
       -- Load the colorscheme here
