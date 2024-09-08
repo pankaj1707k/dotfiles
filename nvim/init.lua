@@ -10,7 +10,7 @@ vim.g.maplocalleader = ' '
 --  For more options, you can see `:help option-list`
 
 -- Netrw
-vim.g.netrw_banner = 0
+-- vim.g.netrw_banner = 0
 
 -- NO WRAP!!
 vim.opt.wrap = false
@@ -97,11 +97,15 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Toggle Netrw file explorer
-vim.keymap.set('n', '<C-e>', '<cmd>:Lexplore<CR>', { desc = 'Toggle Netrw file explorer' })
+vim.keymap.set('n', '<C-e>', '<cmd>:Rexplore<CR>', { desc = 'Toggle Netrw file explorer' })
 
 -- Move current line up/down
 vim.keymap.set('n', '<C-S-j>', '<cmd>:m +1<CR>', { desc = 'Move current line down' })
 vim.keymap.set('n', '<C-S-k>', '<cmd>:m -2<CR>', { desc = 'Move current line up' })
+
+-- move between members of quick fix list
+vim.keymap.set('n', '<leader>ln', '<cmd>:lnext<CR>', { desc = 'Go to next error' })
+vim.keymap.set('n', '<leader>lp', '<cmd>:pnext<CR>', { desc = 'Go to prev error' })
 
 -- [[ Basic Autocommands ]]
 --  See :help lua-guide-autocommands
@@ -137,7 +141,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup {
+require('lazy').setup({
 
   -- [[ Plugin Specs list ]]
 
@@ -432,12 +436,11 @@ require('lazy').setup {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        --
-        -- Ensure `npm` is available before enabling pyright
-        -- pyright = {},
-        --
+        clangd = { filetypes = { 'c' } },
+        gopls = {},
+        pyright = {},
+        bashls = {},
+        ltex = { filetypes = { 'tex' } },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -445,12 +448,12 @@ require('lazy').setup {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
 
         lua_ls = {
           -- cmd = {...},
-          -- filetypes { ...},
+          -- filetypes {...},
           -- capabilities = {},
           settings = {
             Lua = {
@@ -736,4 +739,24 @@ require('lazy').setup {
       require('ibl').setup()
     end,
   },
-}
+}, {
+  ui = {
+    -- If you are using a Nerd Font: set icons to an empty table which will use the
+    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
+})
