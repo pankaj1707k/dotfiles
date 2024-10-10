@@ -1,0 +1,21 @@
+let mapleader=' '
+let maplocalleader=' '
+
+set number
+set clipboard+=unnamed
+set incsearch
+set scrolloff=8
+set nowrap
+set ignorecase
+set smartcase
+
+nnoremap <esc><esc> :nohlsearch<CR>
+
+map <leader>rn <Action>(RenameElement)
+map <leader>f <Action>(ReformatCode)
+
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+Plug 'echasnovski/mini.ai'
+Plug 'echasnovski/mini.surround'
+Plug 'echasnovski/mini.move'
