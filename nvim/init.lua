@@ -99,13 +99,21 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Toggle Netrw file explorer
 vim.keymap.set('n', '<C-e>', '<cmd>:Rexplore<CR>', { desc = 'Toggle Netrw file explorer' })
 
--- Move current line up/down
-vim.keymap.set('n', '<C-S-j>', '<cmd>:m +1<CR>', { desc = 'Move current line down' })
-vim.keymap.set('n', '<C-S-k>', '<cmd>:m -2<CR>', { desc = 'Move current line up' })
-
 -- move between members of quick fix list
 vim.keymap.set('n', '<leader>ln', '<cmd>:lnext<CR>', { desc = 'Go to next error' })
-vim.keymap.set('n', '<leader>lp', '<cmd>:pnext<CR>', { desc = 'Go to prev error' })
+vim.keymap.set('n', '<leader>lp', '<cmd>:lprev<CR>', { desc = 'Go to prev error' })
+
+-- Enter the builtin terminal
+vim.keymap.set('n', '<leader>te', function()
+  vim.cmd 'terminal'
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
+  vim.opt_local.signcolumn = 'no'
+  vim.cmd 'startinsert'
+end)
+
+-- Close the terminal buffer
+vim.keymap.set('n', '<leader>tq', '<cmd>bd!<CR>', { desc = 'Close terminal buffer' })
 
 -- [[ Basic Autocommands ]]
 --  See :help lua-guide-autocommands
@@ -241,7 +249,7 @@ require('lazy').setup({
       -- Useful for getting pretty icons, but requires special font.
       --  If you already have a Nerd Font, or terminal set up with fallback fonts
       --  you can enable this
-      -- { 'nvim-tree/nvim-web-devicons' }
+      { 'nvim-tree/nvim-web-devicons' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -438,7 +446,13 @@ require('lazy').setup({
       local servers = {
         clangd = { filetypes = { 'c' } },
         gopls = {},
-        pyright = {},
+        pyright = {
+          settings = {
+            analysis = {
+              typeCheckingMode = 'standard', -- possible value: 'off', 'basic', 'standard', 'strict'
+            },
+          },
+        },
         bashls = {},
         ltex = { filetypes = { 'tex' } },
         -- rust_analyzer = {},
@@ -448,8 +462,13 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
-        --
+        tsserver = {
+          init_options = {
+            preferences = {
+              disableSuggestions = true,
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = {...},
@@ -701,6 +720,10 @@ require('lazy').setup({
         return '%2l:%-2v'
       end
 
+      -- Move one or more lines in any direction
+      -- Alt + h/j/k/l
+      require('mini.move').setup()
+
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
@@ -739,6 +762,9 @@ require('lazy').setup({
       require('ibl').setup()
     end,
   },
+
+  -- git operations
+  'tpope/vim-fugitive',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
