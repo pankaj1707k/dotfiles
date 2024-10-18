@@ -10,7 +10,7 @@ My configurations for some system components and development environments
 
 - Font config: `fonts.conf`
   - Location: `~/.config/fontconfig/`
-  - Required fonts: `Inter`, `JetBrainsMono Nerd Font`
+  - Required fonts: `Inter`, `Fira Code`
 
 - `nvim/*` location: `~/.config/nvim/`
 
