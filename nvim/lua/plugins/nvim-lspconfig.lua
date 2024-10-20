@@ -58,7 +58,6 @@ return {
       clangd = { filetypes = { 'c' } },
       gopls = {},
       bashls = {},
-      ltex = { filetypes = { 'tex' } },
 
       pyright = {
         settings = {
