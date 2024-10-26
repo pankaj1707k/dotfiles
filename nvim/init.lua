@@ -9,8 +9,9 @@ vim.g.maplocalleader = ' '
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Netrw
--- vim.g.netrw_banner = 0
+-- Disable netrw
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 
 -- NO WRAP!!
 vim.opt.wrap = false
@@ -96,8 +97,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Toggle Netrw file explorer
-vim.keymap.set('n', '<C-e>', '<cmd>:Rexplore<CR>', { desc = 'Toggle Netrw file explorer' })
+-- Toggle Neotree file explorer
+vim.keymap.set('n', '<C-e>', '<cmd>Neotree toggle current<CR>', { desc = 'Toggle Neotree file explorer' })
 
 -- move between members of quick fix list
 vim.keymap.set('n', '<leader>ln', '<cmd>:lnext<CR>', { desc = 'Go to next error' })
