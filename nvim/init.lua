@@ -111,7 +111,7 @@ vim.keymap.set('n', '<leader>te', function()
   vim.opt_local.relativenumber = false
   vim.opt_local.signcolumn = 'no'
   vim.cmd 'startinsert'
-end)
+end, { desc = 'Open terminal buffer' })
 
 -- Close the terminal buffer
 vim.keymap.set('n', '<leader>tq', '<cmd>bd!<CR>', { desc = 'Close terminal buffer' })
