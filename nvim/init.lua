@@ -101,8 +101,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-e>', '<cmd>Neotree toggle current<CR>', { desc = 'Toggle Neotree file explorer' })
 
 -- move between members of quick fix list
-vim.keymap.set('n', '<leader>ln', '<cmd>:lnext<CR>', { desc = 'Go to next error' })
-vim.keymap.set('n', '<leader>lp', '<cmd>:lprev<CR>', { desc = 'Go to prev error' })
+vim.keymap.set('n', '<leader>ln', '<cmd>lnext<CR>', { desc = 'Go to next error' })
+vim.keymap.set('n', '<leader>lp', '<cmd>lprev<CR>', { desc = 'Go to prev error' })
 
 -- Enter the builtin terminal
 vim.keymap.set('n', '<leader>te', function()
