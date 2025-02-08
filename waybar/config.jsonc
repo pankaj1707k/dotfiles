@@ -123,11 +123,11 @@
       "warning": 30,
       "critical": 15,
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% \uf5e7",
-    "format-plugged": "{capacity}% \uf1e6",
-    "format-alt": "{time} {icon}",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "\uf5e7 {capacity}%",
+    "format-plugged": "\uf1e6 {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
     "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
@@ -148,20 +148,20 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) \uf1eb",
+    "format-wifi": "\uf1eb  {essid} ({signalStrength}%)",
     "format-ethernet": "{ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "Disconnected \uf071",
+    "format-disconnected": "\uf071  Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon}\uf293 {format_source}",
+    "format": "{icon} {volume}%   {format_source}",
+    "format-bluetooth": "{icon}\uf293 {volume}%  {format_source}",
     "format-bluetooth-muted": "{icon}\uf293 {format_source}",
     "format-muted": "{format_source}",
-    "format-source": "{volume}% \uf130",
+    "format-source": "\uf130 {volume}%",
     "format-source-muted": "\uf131",
     "format-icons": {
       "headphone": "\uf025",
