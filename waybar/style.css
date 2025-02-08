@@ -1,9 +1,8 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family:
-    FontAwesome,
-    JetBrains Mono;
-  font-size: 15px;
+  font-family: "JetBrains Mono", "Font Awesome 6 Free";
+  font-size: 16px;
+  font-weight: 300;
 }
 
 window#waybar {
@@ -153,7 +152,7 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-  background-color: #f53c3c;
+  background-color: #646dea;
   color: #ffffff;
 }
 
